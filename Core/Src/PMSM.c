@@ -19,6 +19,7 @@ void PMSM_CalibADC(Current_Offsettypedef *p)
 	HAL_ADCEx_InjectedStart_IT(&hadc1);
 
 	HAL_TIM_Base_Start(&htim1);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
 	HAL_Delay(2000);
 	
     for (uint16_t i = 0; i < 100; i++)
@@ -58,13 +59,13 @@ void PMSM_Init(void)
 	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
 	
 	HAL_TIM_Base_Start_IT(&htim1);
-	
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
 	HAL_ADCEx_InjectedStart_IT(&hadc1);
 }
 
 void PMSM_MotorSample(void)
 {
-	Mech_Angle += 0.001f;
+	Mech_Angle += 2.0f * PI * 10.0f / (10000.0f * Polo_Num);		//PWM频率为10k
 	
 	if (Mech_Angle > 2.0f * PI){
 		Mech_Angle -= (2.0f * PI);
@@ -82,31 +83,17 @@ void PMSM_MotorSample(void)
 	Curr_Sample.Ia = (ADCInjectBuff[0] - Current_Offset.Iu_Offset) * 3.3f / 65535.0f / 0.08f;
 	Curr_Sample.Ib = (ADCInjectBuff[1] - Current_Offset.Iv_Offset) * 3.3f / 65535.0f / 0.08f;
 	Curr_Sample.Ic = (ADCInjectBuff[2] - Current_Offset.Iw_Offset) * 3.3f / 65535.0f / 0.08f;
-	
-	/*一阶互补滤波*/
-	StatorI.Ia = (1.0 - Filter_Coeff) * Curr_Sample.Ia + Filter_Coeff * StatorFilter_Ia;
-	StatorI.Ib = (1.0 - Filter_Coeff) * Curr_Sample.Ib + Filter_Coeff * StatorFilter_Ib;
-	StatorI.Ic = (1.0 - Filter_Coeff) * Curr_Sample.Ic + Filter_Coeff * StatorFilter_Ic;
-	
-	StatorFilter_Ia = StatorI.Ia;
-	StatorFilter_Ib = StatorI.Ib;
-	StatorFilter_Ic = StatorI.Ic;
-	
-//	float32_t Ia_hp = Filter_Coeff * (Ia_hp_prev + Curr_Sample.Ia - Ia_prev);
-//	float32_t Ib_hp = Filter_Coeff * (Ib_hp_prev + Curr_Sample.Ib - Ib_prev);
-//	float32_t Ic_hp = Filter_Coeff * (Ic_hp_prev + Curr_Sample.Ic - Ic_prev);
 
-//	Ia_hp_prev = Ia_hp;
-//	Ib_hp_prev = Ib_hp;
-//	Ic_hp_prev = Ic_hp;
-//	Ia_prev = Curr_Sample.Ia;
-//	Ib_prev = Curr_Sample.Ib;
-//	Ic_prev = Curr_Sample.Ic;
-
-//	StatorI.Ia = Ia_hp;
-//	StatorI.Ib = Ib_hp;
-//	StatorI.Ic = Ic_hp;
-
+	const float32_t alpha = 0.1f;
+	/*一阶低通滤波*/
+    StatorFilter_Ia = StatorFilter_Ia + alpha * (Curr_Sample.Ia - StatorFilter_Ia);
+    StatorFilter_Ib = StatorFilter_Ib + alpha * (Curr_Sample.Ib - StatorFilter_Ib);
+    StatorFilter_Ic = StatorFilter_Ic + alpha * (Curr_Sample.Ic - StatorFilter_Ic);	
+	/*赋值给定子电流结构体*/
+	StatorI.Ia = Curr_Sample.Ia;
+	StatorI.Ib = Curr_Sample.Ib;
+	StatorI.Ic = Curr_Sample.Ic;
+	
 	FOC_Clark(&StatorI, &FeedbackCalrk);
 	FOC_Park(&FeedbackParkI, &FeedbackCalrk, Elec_Angle);
 }

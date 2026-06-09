@@ -64,7 +64,7 @@ PID_t CurrentLoopIQ = {
 	.OutMin = -5.0f,
 };
 
-
+HALL_typedef HALL = {0, 0.0f};
 
 
 

@@ -169,4 +169,21 @@ void VOFA_JustFloat_Send2(float ch0, float ch1)
 
     HAL_UART_Transmit(&huart1, tx_buf, (uint16_t)sizeof(tx_buf), 10U);
 }
+
+#define VOFA_CH_COUNT 1U
+
+void VOFA_JustFloat_Send1(float ch0)
+{
+    uint8_t tx_buf[VOFA_CH_COUNT * sizeof(float) + 4U];
+    float data[VOFA_CH_COUNT] = {ch0};
+
+    memcpy(tx_buf, data, sizeof(data));
+
+    tx_buf[sizeof(data) + 0U] = 0x00U;
+    tx_buf[sizeof(data) + 1U] = 0x00U;
+    tx_buf[sizeof(data) + 2U] = 0x80U;
+    tx_buf[sizeof(data) + 3U] = 0x7FU;
+
+    HAL_UART_Transmit(&huart1, tx_buf, (uint16_t)sizeof(tx_buf), 10U);
+}
 /* USER CODE END 1 */

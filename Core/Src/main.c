@@ -31,6 +31,7 @@
 #include "Global_Varibles.h"
 #include "FOC.h"
 #include "PMSM.h"
+#include "HALL.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,27 +102,35 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM1_Init();
   MX_USART1_UART_Init();
+  MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//  PID_Init(&CurrentLoopID);
-//  PID_Init(&CurrentLoopIQ);
+
   PMSM_BoadEnable();
   PMSM_CalibADC(&Current_Offset);
   PMSM_Init();
+  HALL_Init();
+  
+  
+  
   while (1)
   {
 //	  printf("%d,%d,%d\r\n", ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
 //	  printf("%f,%f,%f\r\n", Curr_Sample.Ia, Curr_Sample.Ib, Curr_Sample.Ic);
 //	  printf("%d,%d,%d\r\n", Sector_CCR.CCR1, Sector_CCR.CCR2, Sector_CCR.CCR3);
-	  VOFA_JustFloat_Send3( ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
-
-//	  VOFA_JustFloat_Send3(Curr_Sample.Ia, Curr_Sample.Ib, Curr_Sample.Ic);
+	 
+	  
+//	  VOFA_JustFloat_Send1(HALL.State);
+	  VOFA_JustFloat_Send2(HALL.State, Mech_Angle);
 //	  VOFA_JustFloat_Send2(FeedbackCalrk.Alpha, FeedbackCalrk.Beta);
-//	  VOFA_JustFloat_Send2(FeedbackParkI.D, FeedbackParkI.Q);
+//	  VOFA_JustFloat_Send2(FeedbackParkI.D, FeedbackParkI.Q);	  
+//	  VOFA_JustFloat_Send3( ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
+//	  VOFA_JustFloat_Send3(Curr_Sample.Ia, Curr_Sample.Ib, Curr_Sample.Ic);
+//	  VOFA_JustFloat_Send3(StatorI.Ia, StatorI.Ib, StatorI.Ic);
 //	  VOFA_JustFloat_Send3(CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopID.Error0);
 //	  VOFA_JustFloat_Send3(CurrentLoopIQ.Actual, CurrentLoopIQ.Target, CurrentLoopIQ.Error0);
 //	  VOFA_JustFloat_Send3(Sector_CCR.CCR1, Sector_CCR.CCR2, Sector_CCR.CCR3);

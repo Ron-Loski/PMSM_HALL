@@ -11,6 +11,7 @@
 "pmsm_byhall\usart.o"
 "pmsm_byhall\stm32h7xx_it.o"
 "pmsm_byhall\stm32h7xx_hal_msp.o"
+"pmsm_byhall\hall.o"
 "pmsm_byhall\stm32h7xx_hal_adc.o"
 "pmsm_byhall\stm32h7xx_hal_adc_ex.o"
 "pmsm_byhall\stm32h7xx_hal_rcc.o"

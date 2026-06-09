@@ -43,6 +43,7 @@ void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN Prototypes */
 void VOFA_JustFloat_Send3(float ch0, float ch1, float ch2);
 void VOFA_JustFloat_Send2(float ch0, float ch1);
+void VOFA_JustFloat_Send1(float ch0);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
