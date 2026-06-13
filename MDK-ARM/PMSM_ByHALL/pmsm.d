@@ -53,5 +53,5 @@ pmsm_byhall/pmsm.o: ..\Core\Src\PMSM.c ..\Core\Inc\PMSM.h \
   D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\filtering_functions.h \
   D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\quaternion_math_functions.h \
   D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\window_functions.h \
-  ..\Core\Inc\PID.h ..\Core\Inc\HALL.h ..\Core\Inc\adc.h \
-  ..\Core\Inc\FOC.h
+  ..\Core\Inc\PID.h ..\Core\Inc\HALL.h ..\Core\Inc\usart.h \
+  ..\Core\Inc\adc.h ..\Core\Inc\FOC.h

@@ -103,6 +103,7 @@ int main(void)
   MX_TIM1_Init();
   MX_USART1_UART_Init();
   MX_TIM5_Init();
+  MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -111,7 +112,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
   PMSM_BoadEnable();
-  PMSM_CalibADC(&Current_Offset);
+//  PMSM_CalibADC(&Current_Offset);
   PMSM_Init();
   HALL_Init();
   
@@ -122,20 +123,27 @@ int main(void)
 //	  printf("%d,%d,%d\r\n", ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
 //	  printf("%f,%f,%f\r\n", Curr_Sample.Ia, Curr_Sample.Ib, Curr_Sample.Ic);
 //	  printf("%d,%d,%d\r\n", Sector_CCR.CCR1, Sector_CCR.CCR2, Sector_CCR.CCR3);
-	 
+//	  printf("%f,%f\r\n", HALL.Theta_fit, Mech_Angle);
 	  
 //	  VOFA_JustFloat_Send1(HALL.State);
-	  VOFA_JustFloat_Send2(HALL.State, Mech_Angle);
-//	  VOFA_JustFloat_Send2(FeedbackCalrk.Alpha, FeedbackCalrk.Beta);
-//	  VOFA_JustFloat_Send2(FeedbackParkI.D, FeedbackParkI.Q);	  
+//	  VOFA_JustFloat_Send2(HALL.State, Mech_Angle);
+//	  VOFA_JustFloat_Send2(HALL.Theta_fit, Mech_Angle);
+//	  VOFA_JustFloat_Send2(FeedbackCalrk.Alpha, FeedbackCalrk.Beta);	  
+//	  VOFA_JustFloat_Send3(HALL.State, Mech_Angle, HALL.Theta[0]);
+//	  VOFA_JustFloat_Send3( Current_Offset.Iu_Offset, Current_Offset.Iv_Offset, Current_Offset.Iw_Offset);
 //	  VOFA_JustFloat_Send3( ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
 //	  VOFA_JustFloat_Send3(Curr_Sample.Ia, Curr_Sample.Ib, Curr_Sample.Ic);
 //	  VOFA_JustFloat_Send3(StatorI.Ia, StatorI.Ib, StatorI.Ic);
 //	  VOFA_JustFloat_Send3(CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopID.Error0);
 //	  VOFA_JustFloat_Send3(CurrentLoopIQ.Actual, CurrentLoopIQ.Target, CurrentLoopIQ.Error0);
 //	  VOFA_JustFloat_Send3(Sector_CCR.CCR1, Sector_CCR.CCR2, Sector_CCR.CCR3);
-            
+	  VOFA_JustFloat_Send3(HALL.State, Mech_Angle, HALL.Speed_AvgOmega);
+	  
+//	  VOFA_JustFloat_Send4(FeedbackCalrk.Alpha, FeedbackCalrk.Beta, FeedbackParkI.D, FeedbackParkI.Q);
+//	  VOFA_JustFloat_Send4(CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopIQ.Actual, CurrentLoopIQ.Target);
+//	  VOFA_JustFloat_Send8(FeedbackParkI.D, FeedbackParkI.Q, CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopID.Error0, CurrentLoopIQ.Actual, CurrentLoopIQ.Target, CurrentLoopIQ.Error0);	 
 
+//	  VOFA_JustFloat_Send9(HALL.State, Mech_Angle, Elec_Angle, HALL.Count[0], HALL.Count[1], HALL.Count[2], HALL.Count[3], HALL.Count[4], HALL.Count[5]);
 	  
     /* USER CODE END WHILE */
 
@@ -209,18 +217,20 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 	{
 		PMSM_MotorSample();
 		
-//		/*Id---PI控制*/
-//		CurrentLoopID.Actual = FeedbackParkI.D;
-//		PID_Update(&CurrentLoopID);
-//		OpenLoopUdq.D = CurrentLoopID.Out;
-//		
-//		/*Iq---PI控制*/
-//		CurrentLoopIQ.Actual = FeedbackParkI.Q;
-//		PID_Update(&CurrentLoopIQ);
-//		OpenLoopUdq.Q = CurrentLoopIQ.Out;
-	
+		/*电流环Id---PI控制*/
+		CurrentLoopID.Actual = FeedbackParkI.D;
+		PID_Update(&CurrentLoopID);
+		OpenLoopUdq.D = CurrentLoopID.Out;
+		
+		/*电流环Iq---PI控制*/
+		CurrentLoopIQ.Actual = FeedbackParkI.Q;
+		PID_Update(&CurrentLoopIQ);
+		OpenLoopUdq.Q = CurrentLoopIQ.Out;
+		
 		FOC_AntiPark(&OpenLoopUdq, &OpenLoopUalbe,Elec_Angle);
+		/*扇区判断*/
 		N = FOC_SectorJudege(OpenLoopUalbe.Alpha, OpenLoopUalbe.Beta);
+		/*矢量作用时间*/
 		Vector_Dura = FOC_VectorCaculate(OpenLoopUalbe.Alpha,  OpenLoopUalbe.Beta, N, 24, Tpwm);
 		Sector_CCR = FOC_SectorCCRCaculate(N, Vector_Dura, Tpwm);
 		TIM1->CCR1 = Sector_CCR.CCR1;

@@ -76,7 +76,7 @@ extern float32_t StatorFilter_Ia;		//
 extern float32_t StatorFilter_Ib;		//定子三相电流滤波
 extern float32_t StatorFilter_Ic;		//
 
-extern HALL_typedef HALL;				//HALL传感器状态
+extern volatile HALL_typedef HALL;		//HALL传感器状态
 
 extern Current_Offsettypedef Current_Offset;			//采样偏移
 extern Curr_Sampletypedef Curr_Sample;				//ADC采集三相电流实际数据

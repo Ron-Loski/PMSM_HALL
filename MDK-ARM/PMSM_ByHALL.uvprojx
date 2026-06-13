@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -435,6 +435,16 @@
               <FilePath>..\Core\Inc\PID.h</FilePath>
             </File>
             <File>
+              <FileName>HALL.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\HALL.c</FilePath>
+            </File>
+            <File>
+              <FileName>HALL.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\HALL.h</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/main.c</FilePath>
@@ -468,16 +478,6 @@
               <FileName>stm32h7xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32h7xx_hal_msp.c</FilePath>
-            </File>
-            <File>
-              <FileName>HALL.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\HALL.c</FilePath>
-            </File>
-            <File>
-              <FileName>HALL.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Core\Inc\HALL.h</FilePath>
             </File>
           </Files>
         </Group>
