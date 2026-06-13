@@ -63,14 +63,22 @@ void PMSM_Init(void)
 void PMSM_MotorSample(void)
 {
 	Mech_Angle += 2.0f * PI * 50.0f / (10000.0f * Polo_Num);		//PWM频率为10k
+	HALL.Angle += HALL.Speed_AvgOmega * Ttim1;
+	Elec_Angle = Mech_Angle * Polo_Num;
 	
-	if (Mech_Angle > 2.0f * PI){
-		Mech_Angle -= (2.0f * PI);
-	}else if (Mech_Angle < 0.0f){
-		Mech_Angle += (2 * PI);
+	while (Mech_Angle > 2 * PI){
+		Mech_Angle -= 2 * PI;
+	}
+	while (Elec_Angle > 2 * PI){
+		Elec_Angle -= 2 * PI;
+	}
+	while (HALL.Angle > 2 * PI){
+		HALL.Angle -= 2 * PI;
 	}
 	
-	Elec_Angle = Mech_Angle * Polo_Num;
+	
+	
+	
 	
 	/*读取JDR注入通道数据寄存器*/
 	ADCInjectBuff[0] = ADC1->JDR1;
