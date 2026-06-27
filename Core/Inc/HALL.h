@@ -32,7 +32,7 @@ extern TIM_HandleTypeDef htim5;
 extern volatile HALL_typedef HALL;
 extern float32_t Mech_Angle;				//机械角度
 extern float32_t Elec_Angle;				//电角度
-
-
+extern float32_t Theta_Delta;			//高频电角度差值
+extern uint32_t Switch_Num;
 
 #endif

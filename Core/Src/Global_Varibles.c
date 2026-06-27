@@ -10,6 +10,7 @@ float32_t StatorFilter_Ia = 0.0f;
 float32_t StatorFilter_Ib = 0.0f;
 float32_t StatorFilter_Ic = 0.0f;
 
+float32_t Theta_Delta = 0.0f;
 
 Current_Offsettypedef Current_Offset = {0.0f};
 
@@ -45,9 +46,9 @@ PID_t CurrentLoopID = {
 };
 
 PID_t CurrentLoopIQ = {
-	.Target = 2.0f,
+	.Target = 0.5f,
 	
-	.Kp = 10.0f,
+	.Kp = 8.0f,
 	.Ki = 0.001f,
 	.Kd = 0.0f,
 	
@@ -57,7 +58,7 @@ PID_t CurrentLoopIQ = {
 
 volatile HALL_typedef HALL = {0};
 
-
+uint32_t Switch_Num = 0;
 
 
 

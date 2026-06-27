@@ -9,7 +9,7 @@
 
 void PMSM_BoadEnable(void);
 void PMSM_BoadDisable(void);
-void PMSM_CalibADC(Current_Offsettypedef *p);
+uint8_t PMSM_CalibADC(Current_Offsettypedef *p);
 void PMSM_Init(void);
 void PMSM_MotorSample(void);
 

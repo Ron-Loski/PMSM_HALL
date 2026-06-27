@@ -11,7 +11,9 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim == &htim5)
 	{
+		
 		HALL.CCR += HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
+		TIM5->CCR1 = 0;
 		
 	    uint8_t HU = HAL_GPIO_ReadPin(GPIOH, GPIO_PIN_10) ? 1 : 0;
         uint8_t HV = HAL_GPIO_ReadPin(GPIOH, GPIO_PIN_11) ? 1 : 0;
@@ -43,10 +45,9 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 			case 0x02:
 				HALL.Theta[5] = 2.0f * PI * (5.0f / 6.0f); 
 				HALL.Angle = HALL.Theta[5];
-			
-				/*计算电角速度*/
-				HALL.Speed_AvgOmega = 2.0f * PI / ((float32_t)HALL.CCR * Ttim5);			
-				HALL.CCR = 0;
+			/*计算电角速度*/
+			HALL.Speed_AvgOmega = 2.0f * PI / ((float32_t)HALL.CCR * Ttim5);	
+			HALL.CCR = 0;
 			break;
 		}	
 	}
@@ -56,7 +57,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim == &htim7)
 	{
-
+		HALL.Angle += HALL.Speed_AvgOmega * Ttim7;
+		Theta_Delta = (Elec_Angle - HALL.Angle) / 20.0f;//(Ttim7 / Ttim1)
+		
+		
 		
 	}
 }

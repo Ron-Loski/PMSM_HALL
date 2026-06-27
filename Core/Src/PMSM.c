@@ -10,8 +10,8 @@ void PMSM_BoadDisable(void)
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET);
 }
 
-void PMSM_CalibADC(Current_Offsettypedef *p)
-{
+uint8_t PMSM_CalibADC(Current_Offsettypedef *p)
+{	
 	uint32_t sum_u = 0;
     uint32_t sum_v = 0;
     uint32_t sum_w = 0;
@@ -44,7 +44,9 @@ void PMSM_CalibADC(Current_Offsettypedef *p)
 	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_4);
 
 	HAL_ADCEx_InjectedStop(&hadc1);
-   }
+	
+	return 0;
+  }
 
 void PMSM_Init(void)
 {	
@@ -62,9 +64,15 @@ void PMSM_Init(void)
 
 void PMSM_MotorSample(void)
 {
-	Mech_Angle += 2.0f * PI * 50.0f / (10000.0f * Polo_Num);		//PWM频率为10k
-	HALL.Angle += HALL.Speed_AvgOmega * Ttim1;
-	Elec_Angle = Mech_Angle * Polo_Num;
+	if (Switch_Num < 8000)
+	{
+		Mech_Angle += 2.0f * PI * 50.0f / (10000.0f * Polo_Num);		//PWM频率为10k
+		Elec_Angle = Mech_Angle * Polo_Num;
+	}else{
+		HALL.Angle += HALL.Speed_AvgOmega * Ttim1;	
+		Elec_Angle = HALL.Angle;
+	}
+
 	
 	while (Mech_Angle > 2 * PI){
 		Mech_Angle -= 2 * PI;
@@ -74,12 +82,10 @@ void PMSM_MotorSample(void)
 	}
 	while (HALL.Angle > 2 * PI){
 		HALL.Angle -= 2 * PI;
-	}
-	
-	
-	
-	
-	
+		}
+
+		
+		
 	/*读取JDR注入通道数据寄存器*/
 	ADCInjectBuff[0] = ADC1->JDR1;
 	ADCInjectBuff[1] = ADC1->JDR2;

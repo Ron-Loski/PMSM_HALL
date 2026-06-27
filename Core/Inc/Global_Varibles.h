@@ -43,17 +43,7 @@ typedef struct {
 
 
 /////////////////////////////
-typedef struct {
-	float32_t V_d;
-	float32_t V_q;
-}DQ_Voltagetypedef;
 
-
-
-typedef struct {
-	float32_t Alpha;
-	float32_t Beta;
-}Alpha_Betatypedef;
 
 typedef struct {
 	float32_t Ta;
@@ -72,9 +62,12 @@ extern uint16_t ADCInjectBuff[];			//ADC采集三相电流原始数据
 extern float32_t Mech_Angle;				//机械角度
 extern float32_t Elec_Angle;				//电角度
 extern uint8_t N;						//扇区判断
+extern float32_t Theta_Delta;
 extern float32_t StatorFilter_Ia;		//
 extern float32_t StatorFilter_Ib;		//定子三相电流滤波
 extern float32_t StatorFilter_Ic;		//
+
+extern uint32_t Switch_Num;
 
 extern volatile HALL_typedef HALL;		//HALL传感器状态
 
@@ -89,5 +82,7 @@ extern AlphaBetatypedef FeedbackCalrk ;				//定子电流clark变换abc---alpha&
 extern DQtypedef FeedbackParkI;						//定子电流park变换alphbeta---dq
 extern PID_t CurrentLoopID;							//电流环---Id
 extern PID_t CurrentLoopIQ;							//电流环---Iq
+
+
 
 #endif

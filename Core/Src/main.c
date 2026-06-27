@@ -64,7 +64,7 @@ static void MPU_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint32_t Count = 0;
+uint8_t CalibADC = 0;
 /* USER CODE END 0 */
 
 /**
@@ -112,7 +112,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
   PMSM_BoadEnable();
-//  PMSM_CalibADC(&Current_Offset);
+  PMSM_CalibADC(&Current_Offset);
+  CalibADC = 1;
   PMSM_Init();
   HALL_Init();
   
@@ -137,7 +138,7 @@ int main(void)
 //	  VOFA_JustFloat_Send3(CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopID.Error0);
 //	  VOFA_JustFloat_Send3(CurrentLoopIQ.Actual, CurrentLoopIQ.Target, CurrentLoopIQ.Error0);
 //	  VOFA_JustFloat_Send3(Sector_CCR.CCR1, Sector_CCR.CCR2, Sector_CCR.CCR3);
-	  VOFA_JustFloat_Send3(Mech_Angle, Elec_Angle, HALL.Angle);
+	  VOFA_JustFloat_Send4(N, HALL.State, HALL.Angle, Elec_Angle);
 	  
 //	  VOFA_JustFloat_Send4(FeedbackCalrk.Alpha, FeedbackCalrk.Beta, FeedbackParkI.D, FeedbackParkI.Q);
 //	  VOFA_JustFloat_Send4(CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopIQ.Actual, CurrentLoopIQ.Target);
@@ -215,17 +216,27 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
 	if (hadc == &hadc1)
 	{
+		Switch_Num ++;
+		
 		PMSM_MotorSample();
 		
-		/*电流环Id---PI控制*/
-		CurrentLoopID.Actual = FeedbackParkI.D;
-		PID_Update(&CurrentLoopID);
-		OpenLoopUdq.D = CurrentLoopID.Out;
-		
-		/*电流环Iq---PI控制*/
-		CurrentLoopIQ.Actual = FeedbackParkI.Q;
-		PID_Update(&CurrentLoopIQ);
-		OpenLoopUdq.Q = CurrentLoopIQ.Out;
+		if (CalibADC == 1)
+		{
+			if (Switch_Num > 5000)
+			{
+				Switch_Num = 10000;
+				/*电流环Id---PI控制*/
+				CurrentLoopID.Actual = FeedbackParkI.D;
+				PID_Update(&CurrentLoopID);
+				OpenLoopUdq.D = CurrentLoopID.Out;
+				
+				/*电流环Iq---PI控制*/
+				CurrentLoopIQ.Actual = FeedbackParkI.Q;
+				PID_Update(&CurrentLoopIQ);
+				OpenLoopUdq.Q = CurrentLoopIQ.Out;
+				
+			}
+		}
 		
 		FOC_AntiPark(&OpenLoopUdq, &OpenLoopUalbe,Elec_Angle);
 		/*扇区判断*/
