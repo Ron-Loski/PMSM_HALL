@@ -4,7 +4,7 @@ void HALL_Init(void)
 {
 
 	HAL_TIMEx_HallSensor_Start_IT(&htim5);
-//	HAL_TIM_Base_Start_IT(&htim7);
+
 }
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
@@ -50,18 +50,6 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 			HALL.CCR = 0;
 			break;
 		}	
-	}
-}
-
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	if (htim == &htim7)
-	{
-		HALL.Angle += HALL.Speed_AvgOmega * Ttim7;
-		Theta_Delta = (Elec_Angle - HALL.Angle) / 20.0f;//(Ttim7 / Ttim1)
-		
-		
-		
 	}
 }
 

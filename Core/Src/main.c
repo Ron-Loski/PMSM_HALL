@@ -32,6 +32,7 @@
 #include "FOC.h"
 #include "PMSM.h"
 #include "HALL.h"
+#include "SMC.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -113,11 +114,9 @@ int main(void)
 
   PMSM_BoadEnable();
   PMSM_CalibADC(&Current_Offset);
-  CalibADC = 1;
+  SMC_Iq = 0;
   PMSM_Init();
   HALL_Init();
-  
-  
   
   while (1)
   {
@@ -138,8 +137,8 @@ int main(void)
 //	  VOFA_JustFloat_Send3(CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopID.Error0);
 //	  VOFA_JustFloat_Send3(CurrentLoopIQ.Actual, CurrentLoopIQ.Target, CurrentLoopIQ.Error0);
 //	  VOFA_JustFloat_Send3(Sector_CCR.CCR1, Sector_CCR.CCR2, Sector_CCR.CCR3);
-	  VOFA_JustFloat_Send4(N, HALL.State, HALL.Angle, Elec_Angle);
-	  
+//	  VOFA_JustFloat_Send4(N, HALL.State, HALL.Angle, Elec_Angle);
+	  VOFA_JustFloat_Send7(MotorTarget_rpm, MotorNow_rpm, HALL.State, Elec_Angle, ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
 //	  VOFA_JustFloat_Send4(FeedbackCalrk.Alpha, FeedbackCalrk.Beta, FeedbackParkI.D, FeedbackParkI.Q);
 //	  VOFA_JustFloat_Send4(CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopIQ.Actual, CurrentLoopIQ.Target);
 //	  VOFA_JustFloat_Send8(FeedbackParkI.D, FeedbackParkI.Q, CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopID.Error0, CurrentLoopIQ.Actual, CurrentLoopIQ.Target, CurrentLoopIQ.Error0);	 
@@ -216,40 +215,86 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
 	if (hadc == &hadc1)
 	{
-		Switch_Num ++;
+		ControlTick ++;
 		
 		PMSM_MotorSample();
-		
-		if (CalibADC == 1)
+
+		switch (Motor_State)
 		{
-			if (Switch_Num > 5000)
-			{
-				Switch_Num = 10000;
-				/*电流环Id---PI控制*/
-				CurrentLoopID.Actual = FeedbackParkI.D;
-				PID_Update(&CurrentLoopID);
-				OpenLoopUdq.D = CurrentLoopID.Out;
+			case MOTOR_OPEN_CURRENT:
+				CurrentLoopID.Target = 0.0f;
+				CurrentLoopIQ.Target = 2.0f;
+				if (ControlTick > 10000)
+				{
+					Motor_State = MOTOR_HALL_CURRENT;
+					ControlTick = 0;
+				}
+				break;
+			case MOTOR_HALL_CURRENT:
 				
-				/*电流环Iq---PI控制*/
-				CurrentLoopIQ.Actual = FeedbackParkI.Q;
-				PID_Update(&CurrentLoopIQ);
-				OpenLoopUdq.Q = CurrentLoopIQ.Out;
+				CurrentLoopID.Target = 0.0f;
+				CurrentLoopIQ.Target = 2.0f;
+
+				if (ControlTick > 10000)
+				{
+					Motor_State = MOTOR_SMC_SPEED;
+					ControlTick = 0;
+					SpeedLoopCnt = 0;
+				}
+				break;
+			case MOTOR_SMC_SPEED:
+				if (++SpeedLoopCnt >= 10)
+				{
+					SpeedLoopCnt = 0;
+
+					float32_t w_ref = MotorTarget_rpm * PI / 30.0f;
+					float32_t w_fb  = HALL.Speed_AvgOmega / Polo_Num;
+					
+					MotorNow_rpm = w_fb * 30.0 / PI;
+
+					SMC_Iq = SMC_Speed_Process(&SMC_Speed, w_ref, w_fb);
+					CurrentLoopIQ.Target = SMC_Iq;
+				}
+				break;
 				
-			}
+			default:
+				break;
 		}
+				
+		/*电流环Id---PI控制*/
+		CurrentLoopID.Actual = FeedbackParkI.D;
+		PID_Update(&CurrentLoopID);
+		OpenLoopUdq.D = CurrentLoopID.Out;
+		
+		/*电流环Iq---PI控制*/
+		CurrentLoopIQ.Actual = FeedbackParkI.Q;
+		PID_Update(&CurrentLoopIQ);
+		OpenLoopUdq.Q = CurrentLoopIQ.Out;
+
 		
 		FOC_AntiPark(&OpenLoopUdq, &OpenLoopUalbe,Elec_Angle);
 		/*扇区判断*/
 		N = FOC_SectorJudege(OpenLoopUalbe.Alpha, OpenLoopUalbe.Beta);
 		/*矢量作用时间*/
-		Vector_Dura = FOC_VectorCaculate(OpenLoopUalbe.Alpha,  OpenLoopUalbe.Beta, N, 24, Tpwm);
+		Vector_Dura = FOC_VectorCaculate(OpenLoopUalbe.Alpha,  OpenLoopUalbe.Beta, N, U_dc, Tpwm);
 		Sector_CCR = FOC_SectorCCRCaculate(N, Vector_Dura, Tpwm);
+		
 		TIM1->CCR1 = Sector_CCR.CCR1;
 		TIM1->CCR2 = Sector_CCR.CCR2;
 		TIM1->CCR3 = Sector_CCR.CCR3;
 	}
 }
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if (htim == &htim7)
+	{
+//		float32_t w_ref = MotorTarget_rpm * PI / 30;
+//		float32_t w_fb = HALL.Speed_AvgOmega / Polo_Num;
+//		SMC_Iq = SMC_Speed_Process(&SMC_Speed, w_ref, w_fb);
+//		CurrentLoopIQ.Target = SMC_Iq;
+	}
+}
 
 
 

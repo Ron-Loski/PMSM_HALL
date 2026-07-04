@@ -91,9 +91,9 @@ Sector_CCRCaculatetypedef FOC_SectorCCRCaculate(uint8_t N, Vector_TCaculatetyped
 		Tb = Tb / Ttemp * T_pwm;
 	}
 
-	float32_t value1 = (T_pwm - Ta - Tb) / 4.0;
-	float32_t value2 = value1 + Ta / 2.0;
-	float32_t value3 = value2 + Tb / 2.0;
+	volatile float32_t value1 = (T_pwm - Ta - Tb) / 4.0;
+	volatile float32_t value2 = value1 + Ta / 2.0;
+	volatile float32_t value3 = value2 + Tb / 2.0;
 
 	switch(N)       //From top to bottom represents each sector
 	{

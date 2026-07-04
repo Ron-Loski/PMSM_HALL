@@ -5,6 +5,7 @@
 "pmsm_byhall\foc.o"
 "pmsm_byhall\pid.o"
 "pmsm_byhall\hall.o"
+"pmsm_byhall\smc.o"
 "pmsm_byhall\main.o"
 "pmsm_byhall\gpio.o"
 "pmsm_byhall\adc.o"

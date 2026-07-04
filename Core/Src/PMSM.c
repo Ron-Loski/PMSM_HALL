@@ -16,7 +16,7 @@ uint8_t PMSM_CalibADC(Current_Offsettypedef *p)
     uint32_t sum_v = 0;
     uint32_t sum_w = 0;
 
-	HAL_ADCEx_InjectedStart_IT(&hadc1);
+	HAL_ADCEx_InjectedStart(&hadc1);
 
 	HAL_TIM_Base_Start(&htim1);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
@@ -40,12 +40,13 @@ uint8_t PMSM_CalibADC(Current_Offsettypedef *p)
     p->Iv_Offset = sum_v / 100.0f;
     p->Iw_Offset = sum_w / 100.0f;
 	
-
+	
+	HAL_TIM_Base_Stop(&htim1);
 	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_4);
 
 	HAL_ADCEx_InjectedStop(&hadc1);
 	
-	return 0;
+	return 1;
   }
 
 void PMSM_Init(void)
@@ -64,25 +65,21 @@ void PMSM_Init(void)
 
 void PMSM_MotorSample(void)
 {
-	if (Switch_Num < 8000)
+	if (Motor_State == MOTOR_OPEN_CURRENT)
 	{
 		Mech_Angle += 2.0f * PI * 50.0f / (10000.0f * Polo_Num);		//PWM频率为10k
 		Elec_Angle = Mech_Angle * Polo_Num;
-	}else{
+	}
+	else
+	{
 		HALL.Angle += HALL.Speed_AvgOmega * Ttim1;	
-		Elec_Angle = HALL.Angle;
+		Elec_Angle = HALL.Angle;		
 	}
 
 	
-	while (Mech_Angle > 2 * PI){
-		Mech_Angle -= 2 * PI;
-	}
-	while (Elec_Angle > 2 * PI){
-		Elec_Angle -= 2 * PI;
-	}
-	while (HALL.Angle > 2 * PI){
-		HALL.Angle -= 2 * PI;
-		}
+	while (Mech_Angle > 2 * PI) { Mech_Angle -= 2 * PI; }
+	while (Elec_Angle > 2 * PI) { Elec_Angle -= 2 * PI; }
+	while (HALL.Angle > 2 * PI) { HALL.Angle -= 2 * PI; }
 
 		
 		

@@ -1,7 +1,7 @@
 Dependencies for Project 'PMSM_ByHALL', Target 'PMSM_ByHALL': (DO NOT MODIFY !)
 CompilerVersion: 6240000::V6.24::ARMCLANG
-F (startup_stm32h743xx.s)(0x6A2D71A3)(--target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 543" -Wa,armasm,--pd,"STM32H743xx SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o pmsm_byhall/startup_stm32h743xx.o)
-F (..\Core\Src\PMSM.c)(0x6A2E71DA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/pmsm.o -MMD)
+F (startup_stm32h743xx.s)(0x6A476076)(--target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 543" -Wa,armasm,--pd,"STM32H743xx SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o pmsm_byhall/startup_stm32h743xx.o)
+F (..\Core\Src\PMSM.c)(0x6A479838)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/pmsm.o -MMD)
 I (..\Core\Inc\PMSM.h)(0x6A2E6FC1)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x69BE76BF)
 I (..\Core\Inc\stm32h7xx_hal_conf.h)(0x6A280808)
@@ -36,7 +36,7 @@ I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h)(0x69BE76BF)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h)(0x69BE76BF)
 I (..\Core\Inc\tim.h)(0x6A280807)
 I (..\Core\Inc\main.h)(0x6A297459)
-I (..\Core\Inc\Global_Varibles.h)(0x6A3FC038)
+I (..\Core\Inc\Global_Varibles.h)(0x6A488DDC)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math.h)(0x69D7AA9F)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math_types.h)(0x69D7AA9F)
 I (..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x69BE7668)
@@ -60,13 +60,14 @@ I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\filtering_functions.h)(0x6
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\quaternion_math_functions.h)(0x69D7AA9F)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\window_functions.h)(0x69D7AA9F)
 I (..\Core\Inc\PID.h)(0x6A26835A)
-I (..\Core\Inc\HALL.h)(0x6A2E6600)
+I (..\Core\Inc\HALL.h)(0x6A4798E2)
 I (..\Core\Inc\usart.h)(0x6A296872)
+I (..\Core\Inc\SMC.h)(0x6A47625A)
 I (..\Core\Inc\adc.h)(0x6A25A82F)
 I (..\Core\Inc\FOC.h)(0x6A267EA1)
 F (..\Core\Inc\PMSM.h)(0x6A2E6FC1)()
-F (..\Core\Src\Global_Varibles.c)(0x6A38F9C0)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/global_varibles.o -MMD)
-I (..\Core\Inc\Global_Varibles.h)(0x6A3FC038)
+F (..\Core\Src\Global_Varibles.c)(0x6A488DDC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/global_varibles.o -MMD)
+I (..\Core\Inc\Global_Varibles.h)(0x6A488DDC)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x69BE76BF)
 I (..\Core\Inc\stm32h7xx_hal_conf.h)(0x6A280808)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h)(0x69BE76BF)
@@ -121,12 +122,13 @@ I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\filtering_functions.h)(0x6
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\quaternion_math_functions.h)(0x69D7AA9F)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\window_functions.h)(0x69D7AA9F)
 I (..\Core\Inc\PID.h)(0x6A26835A)
-I (..\Core\Inc\HALL.h)(0x6A2E6600)
+I (..\Core\Inc\HALL.h)(0x6A4798E2)
 I (..\Core\Inc\tim.h)(0x6A280807)
 I (..\Core\Inc\main.h)(0x6A297459)
 I (..\Core\Inc\usart.h)(0x6A296872)
-F (..\Core\Inc\Global_Varibles.h)(0x6A3FC038)()
-F (..\Core\Src\FOC.c)(0x6A267ED0)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/foc.o -MMD)
+I (..\Core\Inc\SMC.h)(0x6A47625A)
+F (..\Core\Inc\Global_Varibles.h)(0x6A488DDC)()
+F (..\Core\Src\FOC.c)(0x6A4783AE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/foc.o -MMD)
 I (..\Core\Inc\FOC.h)(0x6A267EA1)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x69BE76BF)
 I (..\Core\Inc\stm32h7xx_hal_conf.h)(0x6A280808)
@@ -159,7 +161,7 @@ I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h)(0x69BE76BF)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h)(0x69BE76BF)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h)(0x69BE76BF)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h)(0x69BE76BF)
-I (..\Core\Inc\Global_Varibles.h)(0x6A3FC038)
+I (..\Core\Inc\Global_Varibles.h)(0x6A488DDC)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math.h)(0x69D7AA9F)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math_types.h)(0x69D7AA9F)
 I (..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x69BE7668)
@@ -183,10 +185,11 @@ I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\filtering_functions.h)(0x6
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\quaternion_math_functions.h)(0x69D7AA9F)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\window_functions.h)(0x69D7AA9F)
 I (..\Core\Inc\PID.h)(0x6A26835A)
-I (..\Core\Inc\HALL.h)(0x6A2E6600)
+I (..\Core\Inc\HALL.h)(0x6A4798E2)
 I (..\Core\Inc\tim.h)(0x6A280807)
 I (..\Core\Inc\main.h)(0x6A297459)
 I (..\Core\Inc\usart.h)(0x6A296872)
+I (..\Core\Inc\SMC.h)(0x6A47625A)
 F (..\Core\Inc\FOC.h)(0x6A267EA1)()
 F (..\Core\Src\PID.c)(0x69B4F0C0)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/pid.o -MMD)
 I (..\Core\Inc\PID.h)(0x6A26835A)
@@ -222,8 +225,8 @@ I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h)(0x69BE76BF)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h)(0x69BE76BF)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h)(0x69BE76BF)
 F (..\Core\Inc\PID.h)(0x6A26835A)()
-F (..\Core\Src\HALL.c)(0x6A2E6942)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/hall.o -MMD)
-I (..\Core\Inc\HALL.h)(0x6A2E6600)
+F (..\Core\Src\HALL.c)(0x6A47625A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/hall.o -MMD)
+I (..\Core\Inc\HALL.h)(0x6A4798E2)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x69BE76BF)
 I (..\Core\Inc\stm32h7xx_hal_conf.h)(0x6A280808)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h)(0x69BE76BF)
@@ -280,8 +283,66 @@ I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\window_functions.h)(0x69D7
 I (..\Core\Inc\tim.h)(0x6A280807)
 I (..\Core\Inc\main.h)(0x6A297459)
 I (..\Core\Inc\usart.h)(0x6A296872)
-F (..\Core\Inc\HALL.h)(0x6A2E6600)()
-F (../Core/Src/main.c)(0x6A2E721A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/main.o -MMD)
+F (..\Core\Inc\HALL.h)(0x6A4798E2)()
+F (..\Core\Src\SMC.c)(0x6A477E9C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/smc.o -MMD)
+I (..\Core\Inc\SMC.h)(0x6A47625A)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x69BE76BF)
+I (..\Core\Inc\stm32h7xx_hal_conf.h)(0x6A280808)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_def.h)(0x69BE76BF)
+I (..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\stm32h7xx.h)(0x69BE76C0)
+I (..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\stm32h743xx.h)(0x69BE76C0)
+I (..\Drivers\CMSIS\Include\core_cm7.h)(0x69BE7668)
+I (..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\system_stm32h7xx.h)(0x69BE76C0)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_gpio.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_gpio_ex.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma_ex.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_mdma.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_exti.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_cortex.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_adc.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_adc_ex.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash_ex.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hsem.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_i2c.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_i2c_ex.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr_ex.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h)(0x69BE76BF)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h)(0x69BE76BF)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math_types.h)(0x69D7AA9F)
+I (..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x69BE7668)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math_memory.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\none.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\utils.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\basic_math_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\interpolation_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\bayes_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\statistics_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\fast_math_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\matrix_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\complex_math_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\controller_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\support_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\distance_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\svm_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\svm_defines.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\transform_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\filtering_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\quaternion_math_functions.h)(0x69D7AA9F)
+I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\window_functions.h)(0x69D7AA9F)
+I (..\Core\Inc\tim.h)(0x6A280807)
+I (..\Core\Inc\main.h)(0x6A297459)
+F (..\Core\Inc\SMC.h)(0x6A47625A)()
+F (../Core/Src/main.c)(0x6A488DDC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/main.o -MMD)
 I (..\Core\Inc\main.h)(0x6A297459)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x69BE76BF)
 I (..\Core\Inc\stm32h7xx_hal_conf.h)(0x6A280808)
@@ -319,7 +380,7 @@ I (..\Core\Inc\tim.h)(0x6A280807)
 I (..\Core\Inc\usart.h)(0x6A296872)
 I (..\Core\Inc\gpio.h)(0x6A25A82F)
 I (..\Core\Inc\PMSM.h)(0x6A2E6FC1)
-I (..\Core\Inc\Global_Varibles.h)(0x6A3FC038)
+I (..\Core\Inc\Global_Varibles.h)(0x6A488DDC)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math.h)(0x69D7AA9F)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math_types.h)(0x69D7AA9F)
 I (..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x69BE7668)
@@ -343,7 +404,8 @@ I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\filtering_functions.h)(0x6
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\quaternion_math_functions.h)(0x69D7AA9F)
 I (D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\window_functions.h)(0x69D7AA9F)
 I (..\Core\Inc\PID.h)(0x6A26835A)
-I (..\Core\Inc\HALL.h)(0x6A2E6600)
+I (..\Core\Inc\HALL.h)(0x6A4798E2)
+I (..\Core\Inc\SMC.h)(0x6A47625A)
 I (..\Core\Inc\FOC.h)(0x6A267EA1)
 F (../Core/Src/gpio.c)(0x6A297457)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/gpio.o -MMD)
 I (..\Core\Inc\gpio.h)(0x6A25A82F)
@@ -413,7 +475,7 @@ I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h)(0x69BE76BF)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h)(0x69BE76BF)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h)(0x69BE76BF)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h)(0x69BE76BF)
-F (../Core/Src/tim.c)(0x6A2823C5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/tim.o -MMD)
+F (../Core/Src/tim.c)(0x6A3FC15B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include-I./RTE/_PMSM_ByHALL-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/Include-ID:/keil5/ARM/PACK/ARM/CMSIS-DSP/1.17.0/PrivateInclude-ID:/keil5/ARM/PACK/ARM/CMSIS/6.2.0/CMSIS/Core/Include-D__UVISION_VERSION="543" -DSTM32H743xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H743xx-o pmsm_byhall/tim.o -MMD)
 I (..\Core\Inc\tim.h)(0x6A280807)
 I (..\Core\Inc\main.h)(0x6A297459)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x69BE76BF)
