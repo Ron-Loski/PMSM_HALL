@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "dma.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -33,6 +34,8 @@
 #include "PMSM.h"
 #include "HALL.h"
 #include "SMC.h"
+#include "Justfloat.h"
+#include "ABZ.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,6 +61,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void PeriphCommonClock_Config(void);
 static void MPU_Config(void);
 /* USER CODE BEGIN PFP */
 
@@ -66,6 +70,12 @@ static void MPU_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint8_t CalibADC = 0;
+
+float32_t EMFU = 0.0f;
+float32_t EMFV = 0.0f;
+float32_t EMFW = 0.0f;
+
+
 /* USER CODE END 0 */
 
 /**
@@ -94,32 +104,43 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
 
+  /* Configure the peripherals common clocks */
+  PeriphCommonClock_Config();
+
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_ADC1_Init();
   MX_TIM1_Init();
   MX_USART1_UART_Init();
   MX_TIM5_Init();
   MX_TIM7_Init();
+  MX_ADC2_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
   PMSM_BoadEnable();
   PMSM_CalibADC(&Current_Offset);
+  ABZ_Start();
   SMC_Iq = 0;
   PMSM_Init();
   HALL_Init();
   
+  HAL_ADC_Start_DMA(&hadc2, (uint32_t *)ADC_EMFBuff, 3);
   while (1)
   {
+		EMFU = (ADC_EMFBuff[0] - 32768.0f) * 3.3f / 65535.0f * 37.0f;
+		EMFV = (ADC_EMFBuff[1] - 32768.0f) * 3.3f / 65535.0f * 37.0f;
+		EMFW = (ADC_EMFBuff[2] - 32768.0f) * 3.3f / 65535.0f * 37.0f;
+
 //	  printf("%d,%d,%d\r\n", ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
 //	  printf("%f,%f,%f\r\n", Curr_Sample.Ia, Curr_Sample.Ib, Curr_Sample.Ic);
 //	  printf("%d,%d,%d\r\n", Sector_CCR.CCR1, Sector_CCR.CCR2, Sector_CCR.CCR3);
@@ -128,6 +149,7 @@ int main(void)
 //	  VOFA_JustFloat_Send1(HALL.State);
 //	  VOFA_JustFloat_Send2(HALL.State, Mech_Angle);
 //	  VOFA_JustFloat_Send2(HALL.Theta_fit, Mech_Angle);
+//	  VOFA_JustFloat_Send2(Elec_Angle, ABZ_AngleElec);
 //	  VOFA_JustFloat_Send2(FeedbackCalrk.Alpha, FeedbackCalrk.Beta);	  
 //	  VOFA_JustFloat_Send3(HALL.State, Mech_Angle, HALL.Theta[0]);
 //	  VOFA_JustFloat_Send3( Current_Offset.Iu_Offset, Current_Offset.Iv_Offset, Current_Offset.Iw_Offset);
@@ -136,14 +158,15 @@ int main(void)
 //	  VOFA_JustFloat_Send3(StatorI.Ia, StatorI.Ib, StatorI.Ic);
 //	  VOFA_JustFloat_Send3(CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopID.Error0);
 //	  VOFA_JustFloat_Send3(CurrentLoopIQ.Actual, CurrentLoopIQ.Target, CurrentLoopIQ.Error0);
-//	  VOFA_JustFloat_Send3(Sector_CCR.CCR1, Sector_CCR.CCR2, Sector_CCR.CCR3);
+	  VOFA_JustFloat_Send3(Sector_CCR.CCR1, Sector_CCR.CCR2, Sector_CCR.CCR3);
 //	  VOFA_JustFloat_Send4(N, HALL.State, HALL.Angle, Elec_Angle);
-	  VOFA_JustFloat_Send7(MotorTarget_rpm, MotorNow_rpm, HALL.State, Elec_Angle, ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
+//	  VOFA_JustFloat_Send7(MotorTarget_rpm, MotorNow_rpm, HALL.State, Elec_Angle, ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
 //	  VOFA_JustFloat_Send4(FeedbackCalrk.Alpha, FeedbackCalrk.Beta, FeedbackParkI.D, FeedbackParkI.Q);
 //	  VOFA_JustFloat_Send4(CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopIQ.Actual, CurrentLoopIQ.Target);
 //	  VOFA_JustFloat_Send8(FeedbackParkI.D, FeedbackParkI.Q, CurrentLoopID.Actual, CurrentLoopID.Target, CurrentLoopID.Error0, CurrentLoopIQ.Actual, CurrentLoopIQ.Target, CurrentLoopIQ.Error0);	 
 
 //	  VOFA_JustFloat_Send9(HALL.State, Mech_Angle, Elec_Angle, HALL.Count[0], HALL.Count[1], HALL.Count[2], HALL.Count[3], HALL.Count[4], HALL.Count[5]);
+//	  VOFA_JustFloat_Send10(MotorTarget_rpm, MotorNow_rpm, EMFU, EMFV, EMFW, HALL.State, Elec_Angle, ADCInjectBuff[0], ADCInjectBuff[1], ADCInjectBuff[2]);
 	  
     /* USER CODE END WHILE */
 
@@ -210,6 +233,32 @@ void SystemClock_Config(void)
   }
 }
 
+/**
+  * @brief Peripherals Common Clock Configuration
+  * @retval None
+  */
+void PeriphCommonClock_Config(void)
+{
+  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+
+  /** Initializes the peripherals clock
+  */
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInitStruct.PLL2.PLL2M = 2;
+  PeriphClkInitStruct.PLL2.PLL2N = 12;
+  PeriphClkInitStruct.PLL2.PLL2P = 2;
+  PeriphClkInitStruct.PLL2.PLL2Q = 2;
+  PeriphClkInitStruct.PLL2.PLL2R = 2;
+  PeriphClkInitStruct.PLL2.PLL2RGE = RCC_PLL2VCIRANGE_3;
+  PeriphClkInitStruct.PLL2.PLL2VCOSEL = RCC_PLL2VCOMEDIUM;
+  PeriphClkInitStruct.PLL2.PLL2FRACN = 0;
+  PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
 /* USER CODE BEGIN 4 */
 void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
@@ -218,7 +267,7 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 		ControlTick ++;
 		
 		PMSM_MotorSample();
-
+		
 		switch (Motor_State)
 		{
 			case MOTOR_OPEN_CURRENT:
@@ -243,17 +292,23 @@ void HAL_ADCEx_InjectedConvCpltCallback(ADC_HandleTypeDef *hadc)
 				}
 				break;
 			case MOTOR_SMC_SPEED:
-				if (++SpeedLoopCnt >= 10)
+				if (++SpeedLoopCnt >= 5)
 				{
 					SpeedLoopCnt = 0;
 
+					
 					float32_t w_ref = MotorTarget_rpm * PI / 30.0f;
 					float32_t w_fb  = HALL.Speed_AvgOmega / Polo_Num;
 					
 					MotorNow_rpm = w_fb * 30.0 / PI;
 
-					SMC_Iq = SMC_Speed_Process(&SMC_Speed, w_ref, w_fb);
-					CurrentLoopIQ.Target = SMC_Iq;
+//					SpeedLoop.Target = MotorTarget_rpm;
+					SpeedLoop.Actual = MotorNow_rpm;
+					PID_Update(&SpeedLoop);
+					CurrentLoopIQ.Target = SpeedLoop.Out;
+					
+//					SMC_Iq = SMC_Speed_Process(&SMC_Speed, w_ref, w_fb);
+//					CurrentLoopIQ.Target = SMC_Iq;
 				}
 				break;
 				

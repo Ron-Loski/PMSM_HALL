@@ -6,6 +6,7 @@
 #include "Global_Varibles.h"
 #include "adc.h"
 #include "FOC.h"
+#include "ABZ.h"
 
 void PMSM_BoadEnable(void);
 void PMSM_BoadDisable(void);

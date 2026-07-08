@@ -13,6 +13,8 @@
 #define Polo_Num		4.0f	//极对数
 #define Filter_Coeff		0.1f	//电流环滤波
 
+#define SQRT_3		1.7320508075688772935274463415059
+
 typedef struct {
 	float32_t Ia;
 	float32_t Ib;
@@ -60,6 +62,7 @@ typedef enum {
 }Motor_Statetypedef;
 
 extern uint16_t ADCInjectBuff[];			//ADC采集三相电流原始数据
+extern uint16_t ADC_EMFBuff[];			//ADC采集三相反电动势
 extern float32_t Mech_Angle;				//机械角度
 extern float32_t Elec_Angle;				//电角度
 extern uint8_t N;						//扇区判断
@@ -79,6 +82,9 @@ extern volatile Motor_Statetypedef Motor_State;		//电机运动状态enum类型
 extern volatile uint32_t ControlTick;					//状态切换计数值
 extern volatile uint16_t SpeedLoopCnt;				//速度滑膜计数值
 
+extern float32_t ABZ_AngleMech;
+extern float32_t ABZ_AngleElec;
+
 extern Current_Offsettypedef Current_Offset;			//采样偏移
 extern Curr_Sampletypedef Curr_Sample;				//ADC采集三相电流实际数据
 extern DQtypedef OpenLoopUdq;						//开环U_DQQ
@@ -90,6 +96,7 @@ extern AlphaBetatypedef FeedbackCalrk ;				//定子电流clark变换abc---alpha&
 extern DQtypedef FeedbackParkI;						//定子电流park变换alphbeta---dq
 extern PID_t CurrentLoopID;							//电流环---Id
 extern PID_t CurrentLoopIQ;							//电流环---Iq
+extern PID_t SpeedLoop;								//速度环
 extern SMC_Speedtypedef SMC_Speed;					//滑膜速度环
 
 #endif

@@ -74,6 +74,7 @@ void PMSM_MotorSample(void)
 	{
 		HALL.Angle += HALL.Speed_AvgOmega * Ttim1;	
 		Elec_Angle = HALL.Angle;		
+		ABZ_AngleElec = ABZ_GetAngleElec();
 	}
 
 	

@@ -1,4 +1,4 @@
-pmsm_byhall/pmsm.o: ..\Core\Src\PMSM.c ..\Core\Inc\PMSM.h \
+pmsm_byhall/justfloat.o: ..\Core\Src\Justfloat.c ..\Core\Inc\Justfloat.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
@@ -30,29 +30,4 @@ pmsm_byhall/pmsm.o: ..\Core\Src\PMSM.c ..\Core\Inc\PMSM.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\Core\Inc\tim.h ..\Core\Inc\main.h ..\Core\Inc\Global_Varibles.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math_types.h \
-  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\arm_math_memory.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\none.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\utils.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\basic_math_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\interpolation_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\bayes_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\statistics_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\fast_math_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\matrix_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\complex_math_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\controller_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\support_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\distance_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\svm_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\svm_defines.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\transform_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\filtering_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\quaternion_math_functions.h \
-  D:\keil5\ARM\PACK\ARM\CMSIS-DSP\1.17.0\Include\dsp\window_functions.h \
-  ..\Core\Inc\PID.h ..\Core\Inc\HALL.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\SMC.h ..\Core\Inc\adc.h ..\Core\Inc\FOC.h \
-  ..\Core\Inc\ABZ.h
+  ..\Core\Inc\usart.h ..\Core\Inc\main.h

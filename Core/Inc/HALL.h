@@ -6,6 +6,10 @@
 #include "tim.h"
 #include "usart.h"
 
+/*霍尔角度滑动窗口*/
+#define HALL_SPEED_WINDOW_SIZE    4U
+
+
 /*低频霍尔传感器周期*/
 #define Ttim5	(1.0f / (240000000.0f / 240.0f))
 /*中频更新周期*/
